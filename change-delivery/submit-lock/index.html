@@ -1,60 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Change Delivery</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 40px;
-      text-align: center;
-      background-color: #f9f9f9;
-    }
-    .button {
-      display: inline-block;
-      padding: 14px 28px;
-      font-size: 16px;
-      font-weight: bold;
-      color: white;
-      background-color: #25D366;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-    .button:hover {
-      background-color: #1ebc59;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <meta http-equiv="refresh" content="0; url=https://wa.me/6581814711" />
+  <script>
+    window.location.href = "https://wa.me/6581814711";
+  </script>
 </head>
 <body>
-  <h2>Need to Change Your Delivery?</h2>
-  <p>Tap the button below to send us the details:</p>
-
-  <a id="smsButton" class="button">Send SMS</a>
-
-  <script>
-    function getParam(name) {
-      const url = new URL(window.location.href);
-      return decodeURIComponent(url.searchParams.get(name) || '');
-    }
-
-    const address = getParam('address');
-    const date = getParam('date');
-    const eta = getParam('eta');
-    const lock = getParam('lock');
-
-    let msg = "Address: " + address +
-              "\nDate: " + date +
-              "\nETA: " + eta +
-              "\nLock Number: " + lock +
-              "\nLocation of Access Card:" +
-              "\nWill anyone be on site?";
-
-    const encodedMsg = encodeURIComponent(msg);
-    const smsLink = `sms:+6581814711;?&body=${encodedMsg}`;
-    document.getElementById("smsButton").href = smsLink;
-  </script>
+  <p>If you are not redirected, <a href="https://wa.me/6581814711">click here</a>.</p>
 </body>
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    const p = new URLSearchParams(location.search);
+    const msg =
+      `Address: ${decodeURIComponent(p.get("address") || "")}\n` +
+      `Date: ${decodeURIComponent(p.get("date") || "")}\n` +
+      `ETA: ${decodeURIComponent(p.get("eta") || "")}\n` +
+      `Lock Number: ${decodeURIComponent(p.get("lock") || "")}\n` +
+      `Location of Access Card:\nWill anyone be on site:`;
+
+    const phone = "6581814711";
+    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  </script>
+</head>
+<body>
+  <p>Redirecting to WhatsApp...</p>
+</body>
+</html>

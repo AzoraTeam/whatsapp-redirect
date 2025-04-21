@@ -5,7 +5,7 @@
   <title>Redirecting to WhatsApp</title>
   <script>
     const params = new URLSearchParams(window.location.search);
-    const address = params.get("address") || "the jobsite";
+    const address = params.get("address") || "your jobsite";
     const phone = "6581814711";
     const message = `My lock number for ${decodeURIComponent(address)} is:`;
     const redirectURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;

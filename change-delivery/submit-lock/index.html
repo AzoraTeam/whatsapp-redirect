@@ -3,12 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0; url=https://wa.me/6581814711" />
   <script>
-    window.location.href = "https://wa.me/6581814711";
+    const message = 
+      "Address: \n" +
+      "Date: \n" +
+      "ETA: \n" +
+      "Lock Number: \n" +
+      "Location of Access Card:\n" +
+      "Will anyone be on site:";
+
+    const phone = "6581814711";
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.location.href = url;
   </script>
 </head>
 <body>
-  <p>If you are not redirected, <a href="https://wa.me/6581814711">click here</a>.</p>
+  <p>If you are not redirected, <a id="link" href="#">click here</a>.</p>
+  <script>
+    document.getElementById("link").href = `https://wa.me/6581814711?text=${encodeURIComponent(message)}`;
+  </script>
 </body>
 </html>

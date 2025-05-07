@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0; url=https://wa.me/6581814711" />
   <script>
-    window.location.href = "https://wa.me/6581814711";
+    const raw = decodeURIComponent(new URLSearchParams(location.search).get("data") || "");
+    const parsed = {};
+    raw.split("|").forEach(pair => {
+      const [key, value] = pair.split("=");
+      parsed[key] = value;
+    });
+
+    const msg =
+      `Address: ${parsed.address || ""}\n` +
+      `Date: ${parsed.date || ""}\n` +
+      `ETA: ${parsed.eta || ""}\n` +
+      `Lock Number: ${parsed.lock || ""}\n` +
+      `Location of Access Card:\nWill anyone be on site:`;
+
+    const phone = "6581814711";
+    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
   </script>
 </head>
 <body>
-  <p>If you are not redirected, <a href="https://wa.me/6581814711">click here</a>.</p>
+  <p>Redirecting to WhatsApp...</p>
 </body>
 </html>

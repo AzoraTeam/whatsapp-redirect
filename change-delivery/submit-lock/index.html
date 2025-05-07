@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    // Safely parse data query string
     const raw = new URLSearchParams(location.search).get("data") || "";
     const parsed = {};
     raw.split("|").forEach(pair => {
@@ -12,25 +11,18 @@
       parsed[key] = decodeURIComponent(value || "");
     });
 
-    // Compose the WhatsApp message
     const msg =
-      `Address: ${parsed.address}\n` +
-      `Date: ${parsed.date}\n` +
-      `ETA: ${parsed.eta}\n` +
-      `Lock Number: ${parsed.lock}\n` +
+      `Address: ${parsed.address || ""}\n` +
+      `Date: ${parsed.date || ""}\n` +
+      `ETA: ${parsed.eta || ""}\n` +
+      `Lock Number: ${parsed.lock || ""}\n` +
       `Location of Access Card:\nWill anyone be on site:`;
 
-    // Final redirect
     const phone = "6581814711";
-    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    window.location.href = waUrl;
+    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
   </script>
 </head>
 <body>
   <p>Redirecting to WhatsApp...</p>
-  <p>If you are not redirected, <a id="fallback" href="#">click here</a>.</p>
-  <script>
-    document.getElementById("fallback").href = `https://wa.me/6581814711?text=${encodeURIComponent(msg)}`;
-  </script>
 </body>
 </html>

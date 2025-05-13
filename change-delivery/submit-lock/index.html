@@ -12,11 +12,12 @@
     });
 
     const msg =
-      `Address: ${parsed.address || ""}\n` +
-      `Date: ${parsed.date || ""}\n` +
-      `ETA: ${parsed.eta || ""}\n` +
-      `Lock Number: ${parsed.lock || ""}\n` +
-      `Location of Access Card:\nWill anyone be on site:`;
+  `Azora Group - Notice\n\n` +  // Add this to match Twilio header
+  `Address: ${parsed.address || ""}\n` +
+  `Date: ${parsed.date || ""}\n` +
+  `ETA: ${parsed.eta || ""}\n` +
+  `Lock Number: ${parsed.lock || ""}\n\n` +
+  `Location of Access Card:\nWill anyone be on site?`;
 
     const phone = "6581814711";
     location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;

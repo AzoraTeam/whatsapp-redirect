@@ -17,7 +17,10 @@
       `Date: ${parsed.date || ""}\n` +
       `ETA: ${parsed.eta || ""}\n` +
       `Lock Number: ${parsed.lock || ""}\n\n` +
-      `Location of Access Card:\nWill anyone be on site?`;
+      `If you need to update anything, please reply below:\n\n` +
+      `Lock Number:\n` +
+      `Location of Access Card:\n` +
+      `Will anyone be on site?`;
 
     const phone = "6581814711";
     const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;

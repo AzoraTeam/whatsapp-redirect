@@ -4,23 +4,31 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
+    // Get and decode full query string
     const raw = decodeURIComponent(new URLSearchParams(location.search).get("data") || "");
+    
+    // Parse into key-value pairs
     const parsed = {};
     raw.split("|").forEach(pair => {
-      const [key, value] = pair.split("=");
+      const split = pair.split("=");
+      const key = split[0];
+      const value = split.slice(1).join("=");  // Handles equals sign in values too
       parsed[key] = value || "";
     });
 
+    // Compose final WhatsApp message
     const msg =
       `Azora Group - Notice\n\n` +
-      `Address: ${parsed.address}\n` +
-      `Date: ${parsed.date}\n` +
-      `ETA: ${parsed.eta}\n` +
-      `Lock Number: ${parsed.lock}\n\n` +
+      `Address: ${parsed.address || "(not provided)"}\n` +
+      `Date: ${parsed.date || "(not provided)"}\n` +
+      `ETA: ${parsed.eta || "(not provided)"}\n` +
+      `Lock Number: ${parsed.lock || "(not provided)"}\n\n` +
       `Location of Access Card:\nWill anyone be on site?`;
 
+    // Redirect to WhatsApp with full message
     const phone = "6581814711";
-    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    window.location.href = waUrl;
   </script>
 </head>
 <body>

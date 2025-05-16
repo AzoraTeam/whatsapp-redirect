@@ -4,24 +4,16 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    const raw = decodeURIComponent(new URLSearchParams(location.search).get("data") || "");
-    const parsed = {};
-    raw.split("|").forEach(pair => {
-      const [key, ...rest] = pair.split("=");
-      parsed[key] = rest.join("=") || "";
-    });
-
+    const p = new URLSearchParams(location.search);
     const msg =
-      `Azora Group - Notice\n\n` +
-      `Address: ${parsed.address || ""}\n` +
-      `Date: ${parsed.date || ""}\n` +
-      `Lock Number: ${parsed.lock || ""}\n\n` +
-      `Location of Access Card:\n` +
-      `Will anyone be on site?`;
+      `Address: ${decodeURIComponent(p.get("address") || "")}\n` +
+      `Date: ${decodeURIComponent(p.get("date") || "")}\n` +
+      `ETA: ${decodeURIComponent(p.get("eta") || "")}\n` +
+      `Lock Number: ${decodeURIComponent(p.get("lock") || "")}\n` +
+      `Location of Access Card:\nWill anyone be on site:`;
 
     const phone = "6581814711";
-    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    window.location.href = waUrl;
+    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
   </script>
 </head>
 <body>

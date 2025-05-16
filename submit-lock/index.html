@@ -4,12 +4,18 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    const p = new URLSearchParams(location.search);
+    const raw = decodeURIComponent(new URLSearchParams(location.search).get("data") || "");
+    const parsed = {};
+    raw.split("|").forEach(pair => {
+      const [key, value] = pair.split("=");
+      parsed[key] = value;
+    });
+
     const msg =
-      `Address: ${decodeURIComponent(p.get("address") || "")}\n` +
-      `Date: ${decodeURIComponent(p.get("date") || "")}\n` +
-      `ETA: ${decodeURIComponent(p.get("eta") || "")}\n` +
-      `Lock Number: ${decodeURIComponent(p.get("lock") || "")}\n` +
+      `Address: ${parsed.address || ""}\n` +
+      `Date: ${parsed.date || ""}\n` +
+      `ETA: ${parsed.eta || ""}\n` +
+      `Lock Number: ${parsed.lock || ""}\n` +
       `Location of Access Card:\nWill anyone be on site:`;
 
     const phone = "6581814711";

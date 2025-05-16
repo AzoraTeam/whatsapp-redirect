@@ -9,8 +9,8 @@
     const parts = raw.split("|");
     const values = {};
     parts.forEach(kv => {
-      const [k, v] = kv.split("=");
-      values[k] = v;
+      const [key, value] = kv.split("=");
+      values[key] = value;
     });
 
     const msg =
@@ -20,11 +20,11 @@
       `Lock Number: ${values.lock || ""}\n` +
       `Location of Access Card:\nWill anyone be on site:`;
 
-    const phone = "6581814711"; // receiver number
-    window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    const phone = "6581814711";
+    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
   </script>
 </head>
 <body>
-  Redirecting...
+  <p>Redirecting to WhatsApp...</p>
 </body>
 </html>

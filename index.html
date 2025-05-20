@@ -4,27 +4,27 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    const p = new URLSearchParams(location.search).get("data");
-    const raw = decodeURIComponent(p || "");
-    const parts = raw.split("|");
-    const values = {};
-    parts.forEach(kv => {
-      const [k, v] = kv.split("=");
-      values[k] = v;
+    const raw = decodeURIComponent(new URLSearchParams(location.search).get("data") || "");
+    const parsed = {};
+    raw.split("|").forEach(pair => {
+      const [key, ...rest] = pair.split("=");
+      parsed[key] = rest.join("=") || "";
     });
 
     const msg =
-      `Address: ${values.address || ""}\n` +
-      `Date: ${values.date || ""}\n` +
-      `ETA: ${values.eta || ""}\n` +
-      `Lock Number: ${values.lock || ""}\n` +
-      `Location of Access Card:\nWill anyone be on site:`;
+      `Azora Group - Notice\n\n` +
+      `Address: ${parsed.address || ""}\n` +
+      `Date: ${parsed.date || ""}\n` +
+      `Lock Number: ${parsed.lock || ""}\n\n` +
+      `Location of Access Card:\n` +
+      `Will anyone be on site?`;
 
-    const phone = "6581814711"; // receiver number
-    window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    const phone = "6581814711";
+    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    window.location.href = waUrl;
   </script>
 </head>
 <body>
-  Redirecting...
+  <p>Redirecting to WhatsApp...</p>
 </body>
 </html>

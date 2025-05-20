@@ -2,14 +2,26 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting to WhatsApp</title>
+  <title>Redirecting...</title>
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const address = params.get("address") || "your jobsite";
+    const raw = decodeURIComponent(new URLSearchParams(location.search).get("data") || "");
+    const parsed = {};
+    raw.split("|").forEach(pair => {
+      const [key, ...rest] = pair.split("=");
+      parsed[key] = rest.join("=") || "";
+    });
+
+    const msg =
+      `Azora Group - Notice\n\n` +
+      `Address: ${parsed.address || ""}\n` +
+      `Date: ${parsed.date || ""}\n` +
+      `Lock Number: ${parsed.lock || ""}\n\n` +
+      `Location of Access Card:\n` +
+      `Will anyone be on site?`;
+
     const phone = "6581814711";
-    const message = `My lock number for ${decodeURIComponent(address)} is:`;
-    const redirectURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.location.href = redirectURL;
+    const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    window.location.href = waUrl;
   </script>
 </head>
 <body>

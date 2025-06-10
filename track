@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const taskId = urlParams.get("task");
+
+    if (taskId) {
+      // Replace below with your base Onfleet tracking domain
+      const redirectURL = `https://onf.lt/${taskId}`;
+      window.location.href = redirectURL;
+    } else {
+      document.write("Invalid or missing task ID.");
+    }
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>
